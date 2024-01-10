@@ -1,130 +1,181 @@
 package org.example;
-
 import java.util.*;
 
 /**
- * Created by Lina Romilson
- * Date: 2024-01-10
- * Time: 13:36
- * Project GrupparbeteProg3
- * Copyright: MIT
+ * Klass för att beräkna arean på formerna cirkel, rektangel,
+ * triangel och liksidig hexagon. Användaren väljer en
+ * form och anger nödvändiga parametrar, klassen beräknar och
+ * visar arean.
+
+ * Skapad av Lina Romilson
+ * Datum: 2024-01-10
+ * Tid: 13:36
+ * Projekt: GrupparbeteProg3
+ * Upphovsrätt: MIT
  */
 public class Area {
 
     public static void main(String[] args) {
         var scan = new Scanner(System.in);
-        System.out.print("..:: Area converter ::.." + """
-                                
-                ------------------------
-                1. Circle \t\t\t\t| \u25CB
-                2. Rectangle \t\t\t| \u25AD
-                3. Triangle \t\t\t| \u25B3
-                4. Equilateral hexagon \t| \u2B21
-                ------------------------
-                Choose a shape:""" + " ");
-        int shape = scan.nextInt();
+        int shape = 0;
 
-        // 1. If-else sats för att välja vilken form arean ska räknas ut på
-            // 1.1 Kör i igen vid felaktigt angivet val
-        boolean tryAgain = true;
-        while (tryAgain) {
-            if (shape <= 4 && shape >= 1) {
-                // 2. Cirkel
-                if (shape == 1) {
-                    // 2.1 Ange radien
-                    System.out.print("Enter the radius: ");
-                    double radius = scan.nextDouble();
-                    // 2.1.1 Använd metoden circle
-                    double area = circle(radius);
-                    // 2.2 Visa resultatet
-                    System.out.printf("The area of the circle is " + "%.2f\n", area);
-                    // 2.3 Ändra tryAgain till false
-                    tryAgain = false;
-                }
-                // 3. Rektangel
-                else if (shape == 2) {
-                    // 3.1 Ange sidornas längd
-                    System.out.print("Enter the width: ");
-                    double b = scan.nextDouble();
-                    System.out.print("Enter the height: ");
-                    double h = scan.nextDouble();
-                    // 3.1.1 Använd metoden rectangle
-                    double area = rectangle(h,b);
-                    // 3.2 Visa resultatet
-                    System.out.printf("The area of the rectangle is " + "%.2f\n", area);
-                    // 3.3 Ändra tryAgain till false
-                    tryAgain = false;
-                }
-                // 4. Triangel
-                else if (shape == 3) {
-                    // 4.1 Ange höjd och bas
-                    System.out.print("Enter the height: ");
-                    double h = scan.nextDouble();
-                    System.out.print("Enter the base: ");
-                    double b = scan.nextDouble();
-                    // 4.1.1 Använd metoden triangle
-                    double area = triangle(h, b);
-                    // 4.2 Visa resultatet
-                    System.out.printf("The area of the triangle is " + "%.2f\n", area);
-                    // 4.3 Ändra tryAgain till false
-                    tryAgain = false;
-                }
-                // 5. Hexagon
-                else {
-                    // 5.1 Ange sidans längd
-                    System.out.print("Enter the length of the side: ");
-                    double s = scan.nextDouble();
-                    // 5.1.1 Använd metoden hexagon
-                    double area = hexagon(s);
-                    // 5.2 Visa resultatet
-                    System.out.printf("the area of the hexagon is " + "%.2f\n", area);
-                    // 5.3 Ändra tryAgain till false
-                    tryAgain = false;
-                }
+        // Loopa tills att ett giltigt val väljs
+        while (shape < 1 || shape > 4) {
+            printMenu();
+
+            // Kolla om inmatningen är giltig
+            while (!scan.hasNextInt()) {
+                System.out.print("Error: Please enter a valid integer: ");
+                scan.next(); // radera ogiltig inmatning
             }
-            else {
-                System.out.print("Fel: ange ett giltigt alternativ: ");
-                shape = scan.nextInt();
+            shape = scan.nextInt();
+
+            // Visa felmeddelande om det valda numret är ogiltigt
+            if (shape < 1 || shape > 4) {
+                System.out.print("Error: Please enter a valid option (1-4): ");
+            } else {
+                // Beräkna arean på formen
+                handleShapeInput(scan, shape);
             }
         }
     }
-    // Skapa metoder för formerna
+
+    // Metoder för att beräkna arean av olika former
 
     /**
-     * Metod som räknar ut cireklns area
-     * @param r anger cirkelns radie
-     * @return cirkelns area
+     * Metod för att beräkna arean av en cirkel.
+     * @param r Radien för cirkeln.
+     * @return Arean av cirkeln.
      */
-    static double circle (double r) {
+    static double circle(double r) {
         return Math.sqrt(r) * Math.PI;
     }
 
     /**
-     * Metod som räknar ut rektangelns area
-     * @param h anger rektangelns höjd
-     * @param b anger rektangelns bredd
-     * @return rektangelns area
+     * Metod för att beräkna arean av en rektangel.
+     * @param h Höjden på rektangeln.
+     * @param b Basen på rektangeln.
+     * @return Arean av rektangeln.
      */
-    static double rectangle (double h, double b) {
+    static double rectangle(double h, double b) {
         return h * b;
     }
 
     /**
-     * Metod som räknar ut rektangelns area
-     * @param h anger triangelns höjd
-     * @param b anger triangelns bas
-     * @return triangelns area
+     * Metod för att beräkna arean av en triangel.
+     * @param h Höjden på triangeln.
+     * @param b Basen på triangeln.
+     * @return Arean av triangeln.
      */
-    static double triangle (double h, double b) {
-        return (h*b)/2;
+    static double triangle(double h, double b) {
+        return (h * b) / 2;
     }
 
     /**
-     * Metod som räknar ut arean på en liksidig hexagon
-     * @param s anger längden på hexagonens sida
-     * @return hexagonens area
+     * Metod för att beräkna arean av en liksidig hexagon.
+     * @param s Längden på en sida av hexagonen.
+     * @return Arean av hexagonen.
      */
-    static double hexagon (double s) {
-        return (3*Math.sqrt(3) * Math.pow(s,2))/2;
+    static double hexagon(double s) {
+        return (3 * Math.sqrt(3) * Math.pow(s, 2)) / 2;
+    }
+
+    /**
+     * Metod för att hämta icke-negativt  från användaren.
+     * @param scan   Scanner-objekt för inmatning.
+     * @param prompt Meddelande för användaren.
+     * @return Icke-negativt tal från användaren.
+     */
+    static double getNonNegativeDoubleInput(Scanner scan, String prompt) {
+        double value;
+        do {
+            System.out.print(prompt);
+            while (!scan.hasNextDouble()) {
+                System.out.print("Error: Please enter a valid number: ");
+                scan.next(); // Radera ogiltig inmatning
+            }
+            value = scan.nextDouble();
+            if (value < 0) {
+                System.out.println("Error: Enter a non-negative value.");
+            }
+        } while (value < 0);
+        return value;
+    }
+
+    /**
+     * Metod för att beräkna arean av en cirkel med inmatning.
+     *
+     * @param scan Scanner-objekt för inmatning.
+     * @return Arean av cirkeln.
+     */
+    static double calculateCircleArea(Scanner scan) {
+        double radius = getNonNegativeDoubleInput(scan, "Enter the radius: ");
+        return circle(radius);
+    }
+
+    /**
+     * Metod för att beräkna arean av en rektangel med inmatning.
+     * @param scan Scanner-objekt för inmatning.
+     * @return Arean av rektangeln.
+     */
+    static double calculateRectangleArea(Scanner scan) {
+        double width = getNonNegativeDoubleInput(scan, "Enter the width: ");
+        double height = getNonNegativeDoubleInput(scan, "Enter the height: ");
+        return rectangle(height, width);
+    }
+
+    /**
+     * Metod för att beräkna arean av en triangel med inmatning.
+     * @param scan Scanner-objekt för inmatning.
+     * @return Arean av triangeln.
+     */
+    static double calculateTriangleArea(Scanner scan) {
+        double height = getNonNegativeDoubleInput(scan, "Enter the height: ");
+        double base = getNonNegativeDoubleInput(scan, "Enter the base: ");
+        return triangle(height, base);
+    }
+
+    /**
+     * Metod för att beräkna arean av en hexagon med inmatning.
+     * @param scan Scanner-objekt för inmatning.
+     * @return Arean av hexagonen.
+     */
+    static double calculateHexagonArea(Scanner scan) {
+        double side = getNonNegativeDoubleInput(scan, "\n" + "Enter the length of the side: ");
+        return hexagon(side);
+    }
+
+    /**
+     * Metod för att skriva ut menyn för att välja en form.
+     */
+    static void printMenu() {
+        System.out.print("..:: Area converter ::.." + """
+                                
+            ------------------------
+            1. Circle \t\t\t\t| \u25CB
+            2. Rectangle \t\t\t| \u25AD
+            3. Triangle \t\t\t| \u25B3
+            4. Equilateral hexagon \t| \u2B21
+            ------------------------
+            Choose a shape:""" + " ");
+    }
+
+    /**
+     * Metod för att hantera inputen för den valda formen och visa den beräknade arean.
+     * @param scan  Scanner-objekt för inmatning.
+     * @param shape Vald form.
+     */
+    static void handleShapeInput(Scanner scan, int shape) {
+        // Använd switch-sats för att välja rätt beräkningsmetod baserat på vald form
+        double area = switch (shape) {
+            case 1 -> calculateCircleArea(scan);
+            case 2 -> calculateRectangleArea(scan);
+            case 3 -> calculateTriangleArea(scan);
+            case 4 -> calculateHexagonArea(scan);
+            default -> 0.0; // Standardvärde om formen inte känns igen
+        };
+
+        // Visa resultatet av den beräknade arean för den valda formen
+        System.out.printf("The area of the selected shape is %.2f", area);
     }
 }
