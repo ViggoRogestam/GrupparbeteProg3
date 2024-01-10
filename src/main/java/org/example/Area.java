@@ -81,7 +81,7 @@ public class Area {
     }
 
     /**
-     * Metod för att hämta icke-negativt  från användaren.
+     * Metod för att hämta icke-negativt från användaren.
      * @param scan   Scanner-objekt för inmatning.
      * @param prompt Meddelande för användaren.
      * @return Icke-negativt tal från användaren.
