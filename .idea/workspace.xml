@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="errorhandling">
+    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="småfix">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AreaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Area.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1704804292031</updated>
       <workItem from="1704804293366" duration="3000" />
-      <workItem from="1704890131044" duration="11368000" />
+      <workItem from="1704890131044" duration="12368000" />
     </task>
     <task id="LOCAL−00001" summary="test">
       <option name="closed" value="true" />
@@ -128,7 +128,14 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1704902515967</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="småfix">
+      <option name="closed" value="true" />
+      <created>1704904875394</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1704904875394</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +158,8 @@
     <MESSAGE value="first commit (area)" />
     <MESSAGE value="english + symbols" />
     <MESSAGE value="errorhandling" />
-    <option name="LAST_COMMIT_MESSAGE" value="errorhandling" />
+    <MESSAGE value="småfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="småfix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
