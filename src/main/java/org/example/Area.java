@@ -48,7 +48,7 @@ public class Area {
      * @return Arean av cirkeln.
      */
     static double circle(double r) {
-        return Math.sqrt(r) * Math.PI;
+        return Math.pow(r,2) * Math.PI;
     }
 
     /**
