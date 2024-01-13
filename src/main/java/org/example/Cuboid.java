@@ -2,6 +2,19 @@ package org.example;
 
 import java.util.Scanner;
 
+/**
+ * Klass som beräknar volymen av ett rätblock.
+ * <hr>
+ * Skapad av <b>Anton Lövgren</b>
+ * <br>
+ * Datum: 2024-01-13
+ * Tid: 18:18
+ * <br>
+ * Projekt: GrupparbeteProg3
+ * <br>
+ * Upphovsrätt: MIT
+ */
+
 public class Cuboid {
     public static void main(String[] args) {
         // Volym av ett rätblock = bredd * djup * höjd

@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Cuboid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Cylinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Sphere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Volume.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CubeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CuboidTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CylinderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/SphereTest.java" afterDir="false" />
+    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="Volume-calculations added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Cuboid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Cuboid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Volume.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +138,7 @@
       <workItem from="1704804293366" duration="3000" />
       <workItem from="1704974735575" duration="2507000" />
       <workItem from="1704979315835" duration="1010000" />
-      <workItem from="1705149027804" duration="8680000" />
+      <workItem from="1705149027804" duration="10778000" />
     </task>
     <task id="LOCAL−00001" summary="test">
       <option name="closed" value="true" />
@@ -161,7 +154,14 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1704805335239</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="Volume-calculations added">
+      <option name="closed" value="true" />
+      <created>1705163726895</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1705163726895</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +169,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="Volume-calculations added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Volume-calculations added" />
   </component>
 </project>
