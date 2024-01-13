@@ -7,7 +7,6 @@ public class CubeTest {
 
     @Test
     public void testCalculateCube() {
-        // Skriv dina testfall här
         double sideLength = 3.0;
         double expectedVolume = 27.0;
 

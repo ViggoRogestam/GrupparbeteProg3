@@ -7,7 +7,6 @@ public class CuboidTest {
 
     @Test
     public void testCalculateCuboid() {
-        // Skriv dina testfall här
         double height = 10.0;
         double width = 3.0;
         double depth = 3.0;

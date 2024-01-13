@@ -7,7 +7,6 @@ public class CylinderTest {
 
     @Test
     public void testCalculateCube() {
-        // Skriv dina testfall här
         double radius = 5.0;
         double height = 10.0;
         double expectedVolume = 785.3981633974483;

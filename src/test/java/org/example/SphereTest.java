@@ -7,7 +7,6 @@ public class SphereTest {
 
     @Test
     public void testCalculateSphere() {
-        // Skriv dina testfall här
         double radius = 5.0;
         double expectedVolume = 523.5987755982989;
 
