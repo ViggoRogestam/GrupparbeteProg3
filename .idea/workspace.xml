@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="Volume-calculations added">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Cube.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Cuboid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Cuboid.java" afterDir="false" />
+    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="Kommenterat kod">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Volume.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Volume.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +135,7 @@
       <workItem from="1704804293366" duration="3000" />
       <workItem from="1704974735575" duration="2507000" />
       <workItem from="1704979315835" duration="1010000" />
-      <workItem from="1705149027804" duration="10778000" />
+      <workItem from="1705149027804" duration="11149000" />
     </task>
     <task id="LOCAL−00001" summary="test">
       <option name="closed" value="true" />
@@ -161,7 +158,21 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1705163726895</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Kommenterat kod">
+      <option name="closed" value="true" />
+      <created>1705166331113</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1705166331113</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Kommenterat kod">
+      <option name="closed" value="true" />
+      <created>1705166420585</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1705166420585</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +181,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
     <MESSAGE value="Volume-calculations added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Volume-calculations added" />
+    <MESSAGE value="Kommenterat kod" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kommenterat kod" />
   </component>
 </project>

@@ -7,12 +7,12 @@ import java.util.Scanner;
  * har en klass per uträkning för att göra det lättare att läsa.
  * Tagit hjälp av https://eddler.se/lektioner/volym/ för alla beräkningar.
  * <hr>
- * Skapad av <b>Anton Lövgren</b>
+ * @author Anton Lövgren
  * <br>
  * Datum: 2024-01-13
  * Tid: 17:37
  * <br>
- * Projekt: GrupparbeteProg3
+ * Projekt: <a href="https://github.com/ViggoRogestam/GrupparbeteProg3/">GrupparbeteProg3</a>
  * <br>
  * Upphovsrätt: MIT
  */
@@ -25,7 +25,6 @@ public class Volume {
          * Menyval för att välja vilken form man vill beräkna
          * <b>do</b>: är vad som händer
          * <b>while</b>: medans man skriver 1 är det true så då går den tillbaka till do
-         *
          */
         do {
             System.out.println("Choose a figure:");
