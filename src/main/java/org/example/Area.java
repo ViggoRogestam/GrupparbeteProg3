@@ -16,7 +16,6 @@ import java.util.*;
 public class Area {
 
     public static void main(String[] args) {
-        var scan = new Scanner(System.in);
         int shape = 0;
 
         // Loopa tills att ett giltigt val väljs
@@ -24,18 +23,20 @@ public class Area {
             printMenu();
 
             // Kolla om inmatningen är giltig
-            while (!scan.hasNextInt()) {
-                System.out.print("Error: Please enter a valid integer: ");
-                scan.next(); // radera ogiltig inmatning
-            }
-            shape = scan.nextInt();
+            try (Scanner scan = new Scanner(System.in)) {
+                while (!scan.hasNextInt()) {
+                    System.out.print("Error: Please enter a valid integer: ");
+                    scan.next(); // radera ogiltig inmatning
+                }
+                shape = scan.nextInt();
 
-            // Visa felmeddelande om det valda numret är ogiltigt
-            if (shape < 1 || shape > 4) {
-                System.out.print("Error: Please enter a valid option (1-4): ");
-            } else {
-                // Beräkna arean på formen
-                handleShapeInput(scan, shape);
+                // Visa felmeddelande om det valda numret är ogiltigt
+                if (shape < 1 || shape > 4) {
+                    System.out.print("Error: Please enter a valid option (1-4): ");
+                } else {
+                    // Beräkna arean på formen
+                    handleShapeInput(shape);
+                }
             }
         }
     }
@@ -81,69 +82,125 @@ public class Area {
     }
 
     /**
-     * Metod för att hämta icke-negativt från användaren.
-     * @param scan   Scanner-objekt för inmatning.
-     * @param prompt Meddelande för användaren.
-     * @return Icke-negativt tal från användaren.
-     */
-    static double getNonNegativeDoubleInput(Scanner scan, String prompt) {
-        double value;
-        do {
-            System.out.print(prompt);
-            while (!scan.hasNextDouble()) {
-                System.out.print("Error: Please enter a valid number: ");
-                scan.next(); // Radera ogiltig inmatning
-            }
-            value = scan.nextDouble();
-            if (value < 0) {
-                System.out.println("Error: Enter a non-negative value.");
-            }
-        } while (value < 0);
-        return value;
-    }
-
-    /**
      * Metod för att beräkna arean av en cirkel med inmatning.
      *
-     * @param scan Scanner-objekt för inmatning.
      * @return Arean av cirkeln.
      */
-    static double calculateCircleArea(Scanner scan) {
-        double radius = getNonNegativeDoubleInput(scan, "Enter the radius: ");
-        return circle(radius);
+    static double calculateCircleArea() {
+        try (Scanner ignored = new Scanner(System.in)) {
+            double radius = getPositiveDoubleInput( "Enter the radius: ");
+            return circle(radius);
+        }
     }
 
     /**
      * Metod för att beräkna arean av en rektangel med inmatning.
-     * @param scan Scanner-objekt för inmatning.
+     *
      * @return Arean av rektangeln.
      */
-    static double calculateRectangleArea(Scanner scan) {
-        double width = getNonNegativeDoubleInput(scan, "Enter the width: ");
-        double height = getNonNegativeDoubleInput(scan, "Enter the height: ");
-        return rectangle(height, width);
+    static double calculateRectangleArea() {
+        try (Scanner scan = new Scanner(System.in).useLocale(Locale.US)) {
+            System.out.print("Enter the width and height (Width Height): ");
+
+            double width = 0;
+            double height = 0;
+
+            // Ensure that both width and height are provided
+            while (width <= 0 || height <= 0) {
+                try {
+                    // Read the width and height
+                    width = scan.nextDouble();
+                    height = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    System.out.print("Error: Please enter valid numbers for width and height (Width Height): ");
+                    scan.nextLine(); // Clear the invalid input
+                    continue;
+                } catch (NoSuchElementException e) {
+                    System.out.println("Error: End of input reached unexpectedly.");
+                    return 0.0; // Return 0.0 if end of input is reached unexpectedly.
+                }
+                // Check if the values are positive
+                if (width <= 0 || height <= 0) {
+                    System.out.println("Error: Enter positive values for width and height.");
+                }
+            }
+
+
+            return rectangle(height, width);
+        }
     }
+
 
     /**
      * Metod för att beräkna arean av en triangel med inmatning.
-     * @param scan Scanner-objekt för inmatning.
+     *
      * @return Arean av triangeln.
      */
-    static double calculateTriangleArea(Scanner scan) {
-        double height = getNonNegativeDoubleInput(scan, "Enter the height: ");
-        double base = getNonNegativeDoubleInput(scan, "Enter the base: ");
-        return triangle(height, base);
-    }
+    static double calculateTriangleArea() {
+        try (Scanner scan = new Scanner(System.in)) {
+            System.out.print("Enter the base and height (Base Height): ");
 
+            double base = 0;
+            double height = 0;
+
+            // Ensure that both width and height are provided
+            while (base <= 0 || height <= 0) {
+                try {
+                    // Read the width and height
+                    base = scan.nextDouble();
+                    height = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    System.out.print("Error: Please enter valid numbers for base and height (Width Height): ");
+                    scan.nextLine(); // Clear the invalid input
+                    continue;
+                } catch (NoSuchElementException e) {
+                    System.out.println("Error: End of input reached unexpectedly.");
+                    return 0.0; // Return 0.0 if end of input is reached unexpectedly.
+                }
+                // Check if the values are positive
+                if (base <= 0 || height <= 0) {
+                    System.out.println("Error: Enter positive values for base and height.");
+                }
+            }
+
+
+            return triangle(height, base);
+        }
+    }
     /**
      * Metod för att beräkna arean av en hexagon med inmatning.
-     * @param scan Scanner-objekt för inmatning.
+     *
      * @return Arean av hexagonen.
      */
-    static double calculateHexagonArea(Scanner scan) {
-        double side = getNonNegativeDoubleInput(scan, "\n" + "Enter the length of the side: ");
-        return hexagon(side);
+    static double calculateHexagonArea() {
+        try (Scanner ignored = new Scanner(System.in)) {
+            double side = getPositiveDoubleInput( "\n" + "Enter the length of the side: ");
+            return hexagon(side);
+        }
     }
+
+    static double getPositiveDoubleInput(String prompt) {
+        double value;
+        Scanner scan = new Scanner(System.in).useLocale(Locale.US);
+
+        do {
+            System.out.print(prompt);
+            while (!scan.hasNextDouble()) {
+                System.out.print("Error: Please enter a valid number: ");
+                scan.next(); // Delete invalid input
+            }
+            value = scan.nextDouble();
+            if (value <= 0) {
+                System.out.println("Error: Enter a positive value.");
+            }
+        } while (value <= 0);
+
+            scan.close();
+
+        return value;
+    }
+
+
 
     /**
      * Metod för att skriva ut menyn för att välja en form.
@@ -159,22 +216,19 @@ public class Area {
             ------------------------
             Choose a shape:""" + " ");
     }
-
     /**
      * Metod för att hantera inputen för den valda formen och visa den beräknade arean.
-     * @param scan  Scanner-objekt för inmatning.
      * @param shape Vald form.
      */
-    static void handleShapeInput(Scanner scan, int shape) {
+    static void handleShapeInput(int shape) {
         // Använd switch-sats för att välja rätt beräkningsmetod baserat på vald form
         double area = switch (shape) {
-            case 1 -> calculateCircleArea(scan);
-            case 2 -> calculateRectangleArea(scan);
-            case 3 -> calculateTriangleArea(scan);
-            case 4 -> calculateHexagonArea(scan);
+            case 1 -> calculateCircleArea();
+            case 2 -> calculateRectangleArea();
+            case 3 -> calculateTriangleArea();
+            case 4 -> calculateHexagonArea();
             default -> 0.0; // Standardvärde om formen inte känns igen
         };
-
         // Visa resultatet av den beräknade arean för den valda formen
         System.out.printf("The area of the selected shape is %.2f", area);
     }
