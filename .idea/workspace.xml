@@ -4,15 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="småfix">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AreaTest.java" afterDir="false" />
+    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="foundation done, some error handling left">
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Area.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="GrupparbeteProg3" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -25,14 +53,19 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="AreaTest.testCalculateCircleArea" />
+    </enabled-run-configurations>
+  </component>
   <component name="JsBowerSettings">
     <bower-package value="" />
     <bower.json value="" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2alPK7YDdBSKl7NpaHptR7nbT0s" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,8 +75,17 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Area.executor": "Run",
+    "Application.CoordinateSystem.executor": "Run",
     "Application.Main.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AreaTest.executor": "Run",
+    "JUnit.AreaTest.testCalculateCircleArea.executor": "Debug",
+    "JUnit.AreaTest.testCalculateRectangleArea.executor": "Debug",
+    "JUnit.AreaTest.testGetPositiveDoubleInput.executor": "Debug",
     "JUnit.MainTest.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -51,22 +93,98 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "Lina",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lina/OneDrive - Nackademin AB/Nackademin/Kurser/Programmering 3/GrupparbeteProg3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "proofread",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.example" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AreaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupparbeteProg3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.AreaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AreaTest.testCalculateCircleArea" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupparbeteProg3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.AreaTest" />
+      <option name="METHOD_NAME" value="testCalculateCircleArea" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AreaTest.testCalculateRectangleArea" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupparbeteProg3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.AreaTest" />
+      <option name="METHOD_NAME" value="testCalculateRectangleArea" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="GrupparbeteProg3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="GrupparbeteProg3" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AreaTest" />
+        <item itemvalue="JUnit.AreaTest.testCalculateRectangleArea" />
+        <item itemvalue="JUnit.AreaTest.testCalculateCircleArea" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -84,7 +202,9 @@
       <option name="presentableId" value="Default" />
       <updated>1704804292031</updated>
       <workItem from="1704804293366" duration="3000" />
-      <workItem from="1704890131044" duration="12368000" />
+      <workItem from="1704890131044" duration="15712000" />
+      <workItem from="1705067270344" duration="13375000" />
+      <workItem from="1705080716837" duration="15007000" />
     </task>
     <task id="LOCAL−00001" summary="test">
       <option name="closed" value="true" />
@@ -135,7 +255,56 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1704904875394</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="test">
+      <option name="closed" value="true" />
+      <created>1705063951925</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1705063951925</updated>
+    </task>
+    <task id="LOCAL−00009" summary="changes (test-failure)">
+      <option name="closed" value="true" />
+      <created>1705063999677</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1705063999679</updated>
+    </task>
+    <task id="LOCAL−00010" summary="TestUtils class made">
+      <option name="closed" value="true" />
+      <created>1705081108491</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1705081108491</updated>
+    </task>
+    <task id="LOCAL−00011" summary="pom updated version">
+      <option name="closed" value="true" />
+      <created>1705081121786</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1705081121786</updated>
+    </task>
+    <task id="LOCAL−00012" summary="update">
+      <option name="closed" value="true" />
+      <created>1705332791046</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1705332791046</updated>
+    </task>
+    <task id="LOCAL−00013" summary="New Class started + Class for Point but with double as a param">
+      <option name="closed" value="true" />
+      <created>1705332838287</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1705332838287</updated>
+    </task>
+    <task id="LOCAL−00014" summary="foundation done, some error handling left">
+      <option name="closed" value="true" />
+      <created>1705419201938</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1705419201938</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,13 +322,19 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="POM fixad" />
     <MESSAGE value="first commit (area)" />
     <MESSAGE value="english + symbols" />
     <MESSAGE value="errorhandling" />
     <MESSAGE value="småfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="småfix" />
+    <MESSAGE value="test" />
+    <MESSAGE value="changes (test-failure)" />
+    <MESSAGE value="TestUtils class made" />
+    <MESSAGE value="pom updated version" />
+    <MESSAGE value="update" />
+    <MESSAGE value="New Class started + Class for Point but with double as a param" />
+    <MESSAGE value="foundation done, some error handling left" />
+    <option name="LAST_COMMIT_MESSAGE" value="foundation done, some error handling left" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
