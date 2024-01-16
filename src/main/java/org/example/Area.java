@@ -18,21 +18,23 @@ public class Area {
     public static void main(String[] args) {
         int shape = 0;
 
-        // Loopa tills att ett giltigt val väljs
-        while (shape < 1 || shape > 4) {
-            printMenu();
+
 
             // Kolla om inmatningen är giltig
             try (Scanner scan = new Scanner(System.in)) {
+                // Loopa tills att ett giltigt val väljs
+                while (shape < 1 || shape > 4) {
+                    printMenu();
+
                 while (!scan.hasNextInt()) {
-                    System.out.print("Error: Please enter a valid integer: ");
+                    System.out.println("Error: Please enter a valid integer: ");
                     scan.next(); // radera ogiltig inmatning
                 }
                 shape = scan.nextInt();
 
                 // Visa felmeddelande om det valda numret är ogiltigt
                 if (shape < 1 || shape > 4) {
-                    System.out.print("Error: Please enter a valid option (1-4): ");
+                    System.out.println("Error: Please enter a valid option (1-4): ");
                 } else {
                     // Beräkna arean på formen
                     handleShapeInput(shape);
