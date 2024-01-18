@@ -1,7 +1,7 @@
 package org.example;
 
-import java.awt.*;
 import java.text.DecimalFormat;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,7 +39,16 @@ public class CoordinateSystem {
         int choice = scan.nextInt();
             // Alt. 1 beräkna längd mellan två punkter
         if (choice == 1) {
-            distance();
+            System.out.print("Enter the x-coordinate for point 1: ");
+            double x1 = scan.nextDouble();
+            System.out.print("Enter the y-coordinate for point 1: ");
+            double y1 = scan.nextDouble();
+
+            System.out.print("Enter the x-coordinate for point 2: ");
+            double x2 = scan.nextDouble();
+            System.out.print("Enter the y-coordinate for point 2: ");
+            double y2 = scan.nextDouble();
+            distance(x1, y1, x2, y2);
             break;
         }
 
@@ -69,36 +78,52 @@ public class CoordinateSystem {
             System.out.println("Enter a valid choice (1-3)");
         }
     }
-    // beräkna längd mellan två punkter
-    static void distance() {
-        var scan = new Scanner(System.in);
 
-        System.out.print("Enter the x-coordinate for point 1: ");
-        double x1 = scan.nextDouble();
-        System.out.print("Enter the y-coordinate for point 1: ");
-        double y1 = scan.nextDouble();
-
-        System.out.print("Enter the x-coordinate for point 2: ");
-        double x2 = scan.nextDouble();
-        System.out.print("Enter the y-coordinate for point 2: ");
-        double y2 = scan.nextDouble();
-
+    // har denna som static double och inte void för att kunna spara längden
+    // i fil, likt mittpunkten
+    /**
+     * Beräknar längden mellan två punkter
+     *
+     * @return längden
+     */
+    static double distance(double x1, double y1, double x2, double y2) {
+        // Calculate the distance between the two points
         double distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        // Print the distance formatted to two decimal places
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
         System.out.println("The distance between the two points is: " + decimalFormat.format(distance));
+        return distance;
     }
 
-    // få fram mittpunkten mellan två punkter, spara punkten i en fil
+    /**
+     * Får fram mittpunkten mellan två punkter
+     * @return mittpunkt
+     */
     static CustomPoint middlePoint () {
         var scan = new Scanner(System.in);
         System.out.print("Enter the x-coordinate for point 1: ");
+        while (!scan.hasNextDouble()) {
+            String input = scan.next();
+            System.out.println("Invalid input: " + input + ". Please enter a valid number: ");
+        }
         double x1 = scan.nextDouble();
         System.out.print("Enter the y-coordinate for point 1: ");
+        while (!scan.hasNextDouble()) {
+            String input = scan.next();
+            System.out.println("Invalid input: " + input + ". Please enter a valid number: ");
+        }
         double y1 = scan.nextDouble();
         System.out.print("Enter the x-coordinate for point 2: ");
+        while (!scan.hasNextDouble()) {
+            String input = scan.next();
+            System.out.println("Invalid input: " + input + ". Please enter a valid number: ");
+        }
         double x2 = scan.nextDouble();
         System.out.print("Enter the y-coordinate for point 2: ");
+        while (!scan.hasNextDouble()) {
+            String input = scan.next();
+            System.out.println("Invalid input: " + input + ". Please enter a valid number: ");
+        }
         double y2 = scan.nextDouble();
 
         double middleX = (x1 + x2) / 2;
@@ -106,7 +131,12 @@ public class CoordinateSystem {
         return new CustomPoint(middleX, middleY);
 
     }
-    // Egen metod för att spara mittpunkten i en array
+
+    /**
+     * Läser, uppdaterar och sparar punkter i points.txt
+     * @param middle CustomPoint som representerar mittpunkten som läggs till
+     * @return Array av punkter med de uppdaterade punkterna
+     */
     static CustomPoint[] arrayPoints(CustomPoint middle) {
         Scanner scan = new Scanner(System.in);
         CustomPoint[] points = new CustomPoint[5];
@@ -126,7 +156,7 @@ public class CoordinateSystem {
                     }
                 }
             } catch (IOException | NumberFormatException e) {
-                e.printStackTrace();
+                System.err.println("An error occurred: " + e.getMessage());
             }
         }
 // Om det redan finns 5 punkter, låt användaren välja vilken punkt i filen som ska ersättas
@@ -135,13 +165,17 @@ public class CoordinateSystem {
             for (int i = 0; i < points.length; i++) {
                 System.out.println("Point " + (i + 1) + ": " + points[i]);
             }
-            System.out.print("Enter the number of the point you want to replace (1-5): ");
-            int replaceIndex = scan.nextInt();
-            if (replaceIndex >= 1 && replaceIndex <= 5) {
-                points[replaceIndex - 1] = middle;
-            } else {
-                System.out.println("Invalid selection. No point replaced.");
-            }
+            int replaceIndex;
+            do {
+                System.out.print("Enter the number of the point you want to replace (1-5): ");
+                while (!scan.hasNextInt()) {
+                    String input = scan.next();
+                    System.out.println("Invalid input: " + input + ". Please enter an integer between 1 and 5: ");
+                }
+                replaceIndex = scan.nextInt();
+            } while (replaceIndex < 1 || replaceIndex > 5);
+
+            points[replaceIndex -1] = middle;
         } else {
             // Om det inte finns 5 punkter, lägg till den nya mittpunkten
             for (int i = 0; i < points.length; i++) {
@@ -161,30 +195,37 @@ public class CoordinateSystem {
                     writer.write(point.getX() + "," + point.getY() + "\n");
                 }            }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("An error occurred while reading/writing: " + e.getMessage());
         }
 
         return points;
     }
 
-    // Visa senaste
-        // Om ingen mittpunkt är angiven visa meddelande om det
+    /**
+     * Läser in CustomPoint-objekt från textfilen points.txt.
+     *
+     * @param fileName Namnet på filen som innehåller CustomPoint-data.
+     * @return En lista med CustomPoint-objekt som lästs in från points.txt.
+     */
     static List<CustomPoint> readPointsFromFile(String fileName) {
+        // Skapa en lista för att lagra CustomPoint-objekt
         List<CustomPoint> pointsList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
+            // Läs varje rad från filen
             while ((line = br.readLine()) != null) {
                 // Anpassa hur strängen konverteras till CustomPoint
                 String[] parts = line.split(",");
                 double x = Double.parseDouble(parts[0]);
                 double y = Double.parseDouble(parts[1]);
                 CustomPoint point = new CustomPoint(x, y);
+                // Lägg till CustomPoint-objektet i listan
                 pointsList.add(point);
             }
 
         } catch (IOException | NumberFormatException e) {
-            e.printStackTrace(); // ev lägga till mer beskrivande felmeddelande
+            System.err.println("Ett fel inträffade vid läsning/skrivning: " + e.getMessage());
         }
 
         return pointsList;

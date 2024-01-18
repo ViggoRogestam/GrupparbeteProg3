@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="foundation done, some error handling left">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5e2fe2b5-439e-4c9e-8e5b-66a2e0228831" name="Changes" comment="files">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CoordinateSystemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/CustomPointTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Area.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CoordinateSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CoordinateSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CustomPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CustomPoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -76,13 +77,20 @@
   "keyToString": {
     "Application.Area.executor": "Run",
     "Application.CoordinateSystem.executor": "Run",
+    "Application.CoordinateSystemTest.executor": "Run",
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.AreaTest.executor": "Run",
     "JUnit.AreaTest.testCalculateCircleArea.executor": "Debug",
     "JUnit.AreaTest.testCalculateRectangleArea.executor": "Debug",
     "JUnit.AreaTest.testGetPositiveDoubleInput.executor": "Debug",
+    "JUnit.CoordinateSystemTest.executor": "Run",
+    "JUnit.CoordinateSystemTest.testArrayPointsWithExistingPoints.executor": "Run",
+    "JUnit.CoordinateSystemTest.testArrayPointsWithNoExistingPoints.executor": "Run",
+    "JUnit.CoordinateSystemTest.testGetMiddlePoint1.executor": "Run",
+    "JUnit.CustomPointTest.executor": "Run",
     "JUnit.MainTest.executor": "Run",
+    "Maven.grupparbeteProg3 [clean].executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -165,6 +173,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CoordinateSystemTest.testGetMiddlePoint1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="grupparbeteProg3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.CoordinateSystemTest" />
+      <option name="METHOD_NAME" value="testGetMiddlePoint1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="GrupparbeteProg3" />
       <method v="2">
@@ -180,6 +204,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CoordinateSystemTest.testGetMiddlePoint1" />
         <item itemvalue="JUnit.AreaTest" />
         <item itemvalue="JUnit.AreaTest.testCalculateRectangleArea" />
         <item itemvalue="JUnit.AreaTest.testCalculateCircleArea" />
@@ -204,7 +229,8 @@
       <workItem from="1704804293366" duration="3000" />
       <workItem from="1704890131044" duration="15712000" />
       <workItem from="1705067270344" duration="13375000" />
-      <workItem from="1705080716837" duration="15007000" />
+      <workItem from="1705080716837" duration="15507000" />
+      <workItem from="1705501452951" duration="19333000" />
     </task>
     <task id="LOCAL−00001" summary="test">
       <option name="closed" value="true" />
@@ -304,7 +330,21 @@
       <option name="presentableId" value="LOCAL−00014" />
       <updated>1705419201938</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL−00015" summary="error handling in the menu">
+      <option name="closed" value="true" />
+      <created>1705420051610</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1705420051610</updated>
+    </task>
+    <task id="LOCAL−00016" summary="files">
+      <option name="closed" value="true" />
+      <created>1705420095853</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1705420095853</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +374,19 @@
     <MESSAGE value="update" />
     <MESSAGE value="New Class started + Class for Point but with double as a param" />
     <MESSAGE value="foundation done, some error handling left" />
-    <option name="LAST_COMMIT_MESSAGE" value="foundation done, some error handling left" />
+    <MESSAGE value="error handling in the menu" />
+    <MESSAGE value="files" />
+    <option name="LAST_COMMIT_MESSAGE" value="files" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.InputMismatchException" package="java.util" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
