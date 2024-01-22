@@ -181,6 +181,13 @@ public class Area {
         }
     }
 
+    /**
+     * Frågar användaren efter en positiv input och returnerar det angivna värdet om det är positivt.
+     * Matas ett negativt värde/ ett ogiltigt tecken in får användaren mata in igen
+     *
+     * @param prompt En textsträng som ger användaren tydliga instruktioner och vägledning.
+     * @return Ett positivt decimaltal som matats in av användaren.
+     */
     static double getPositiveDoubleInput(String prompt) {
         double value;
         Scanner scan = new Scanner(System.in).useLocale(Locale.US);
