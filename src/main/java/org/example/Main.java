@@ -3,30 +3,32 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args){
-        var scan = new Scanner(System.in);
-        int indata;
-        while (true){
+        Scanner scan = new Scanner(System.in);
+        //int indata;
+        while (true) {
             System.out.println("""
-                 . .:: Coordinate System ::..
-                
-                ------------------------------------------------------------
+                     . .:: Coordinate System ::..
+                                    
+                    ------------------------------------------------------------
 
-                1. Calculate the length between two points
-                2. Find the midpoint between two points
-                3. Show the most recent midpoints (max 5 most recent)
-                
-                ------------------------------------------------------------""");
-            try {
-                indata = scan.nextInt();
+                    1. Calculate the length between two points
+                    2. Find the midpoint between two points
+                    3. Show the most recent midpoints (max 5 most recent)
+                                    
+                    ------------------------------------------------------------""");
+            int indata;
+            while (true) {
+                try {
+                    indata = scan.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: Invalid input");
+                    scan.next(); // clear the scanner buffer
+                }
             }
-            catch (InputMismatchException e){
-                System.out.println("Error: Invalid input");
-                scan.next(); // clear the scanner buffer
-                continue;
-            }
-            switch (indata){
+            switch (indata) {
                 case 1:
-                    while (true){
+                    while (true) {
                         //declare variables
                         double orgTemp;
                         String fromUnit, toUnit, anwser;
@@ -41,12 +43,10 @@ public class Main {
 
                             //run convTemp class-method to convert temperature & print it out
                             System.out.println(TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit));
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             System.out.println("Invalid input" + e);
                             scan.nextLine(); // consume the next token, not the entire line
-                        }
-                        finally {
+                        } finally {
                             System.out.println("\nDo you want to convert again (y/n)?");
                             anwser = scan.next();
 
@@ -59,21 +59,33 @@ public class Main {
 
                 case 2:
                     while (true) {
-                        Area.main(null); // Call the Area module
+                        // Call the main method of the Area class
+                        Area.main(args);
 
-                        // Create a new Scanner instance after the Area module
-                        var scanner = new Scanner(System.in);
+                        // Ask the user if they want to run the program again
+                        System.out.print("\nDo you want to run the program again? (y/n): ");
+                        String userInput = scan.next();
 
-                        System.out.println("\nDo you want to convert again (y/n)?");
-                        String answer = scanner.nextLine();
-
-                        if (!answer.equalsIgnoreCase("y")) {
+                        // If the user enters anything other than 'y', exit the loop
+                        if (!userInput.equalsIgnoreCase("y")) {
+                            System.out.println("Exiting the program. Goodbye!");
                             break;
                         }
                     }
-                    break;
                 case 3:
-                    break;
+                    while (true) {
+                        // Call the main method of the CoordinateSystem class
+                        CoordinateSystem.main(args);
+
+                        // Ask the user if they want to run the program again
+                        System.out.print("Do you want to run the program again? (y/n): ");
+                        String userInput = scan.next();
+
+                        // If the user enters anything other than 'y', exit the loop
+                        if (!userInput.equalsIgnoreCase("y")) {
+                            break;
+                        }
+                    }
                 case 4:
                     break;
                 case 5:
@@ -90,23 +102,18 @@ public class Main {
             }
 
 
-
-
-
-
         }
     }
 }
 
 // class main
-    // public static void
+// public static void
 
-    //loop that runs the program
+//loop that runs the program
 
-    //if-statments to choose which converter to use (area, volumes etc.)
+//if-statments to choose which converter to use (area, volumes etc.)
 
-    //when choosen run a loop inside the loop that runs an imported method with the code to run the calculation
+//when choosen run a loop inside the loop that runs an imported method with the code to run the calculation
 
-    //print result and ask user if they want to run the method again or
-    //go back to the main loop and choose another calculation
-
+//print result and ask user if they want to run the method again or
+//go back to the main loop and choose another calculation
