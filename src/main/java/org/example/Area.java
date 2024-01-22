@@ -226,5 +226,4 @@ public class Area {
         };
         System.out.printf("The area of the selected shape is %.2f%n", area);
     }
-
 }

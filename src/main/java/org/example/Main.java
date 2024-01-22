@@ -58,20 +58,9 @@ public class Main {
 
 
                 case 2:
-                    while (true) {
-                        // Call the main method of the Area class
-                        Area.main(args);
-
-                        // Ask the user if they want to run the program again
-                        System.out.print("\nDo you want to run the program again? (y/n): ");
-                        String userInput = scan.next();
-
-                        // If the user enters anything other than 'y', exit the loop
-                        if (!userInput.equalsIgnoreCase("y")) {
-                            System.out.println("Exiting the program. Goodbye!");
-                            break;
-                        }
-                    }
+                    Area.main(args);
+                    scan.nextLine();
+                    break;
                 case 3:
                     while (true) {
                         // Call the main method of the CoordinateSystem class
@@ -103,6 +92,15 @@ public class Main {
 
 
         }
+    }
+    // Method to read the user input
+    private static boolean readContinueInput(Scanner scan) {
+        // Ask the user if they want to continue
+        System.out.print("Do you want to continue (y/n): ");
+        String input = scan.nextLine();
+
+        // Return the user's choice
+        return input.equalsIgnoreCase("y");
     }
 }
 
