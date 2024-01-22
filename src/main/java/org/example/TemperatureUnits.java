@@ -37,6 +37,7 @@ public class TemperatureUnits {
     }
 
     public static void main(String[] args) {
-        System.out.println(convTemp(32, "celcsius", "kelvin"));
-    }}
+        System.out.println(convTemp(32, "fare", "celsc"));
+    }
+}
 
