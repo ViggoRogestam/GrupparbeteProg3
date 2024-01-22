@@ -7,7 +7,7 @@ public class Main {
         int indata;
         while (true){
             System.out.println("""
-                 ..:: Coordinate System ::..
+                 . .:: Coordinate System ::..
                 
                 ------------------------------------------------------------
 
@@ -21,25 +21,69 @@ public class Main {
             }
             catch (InputMismatchException e){
                 System.out.println("Error: Invalid input");
+                scan.next(); // clear the scanner buffer
                 continue;
             }
             switch (indata){
                 case 1:
-                    continue;
+                    while (true){
+                        //declare variables
+                        double orgTemp;
+                        String fromUnit, toUnit, anwser;
+                        //ask user for input
+                        try {
+                            System.out.println("Enter temperature:");
+                            orgTemp = scan.nextDouble();
+                            System.out.println("Enter temperature unit (celcsius, farneheit or kelvin):");
+                            fromUnit = scan.next();
+                            System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
+                            toUnit = scan.next();
+
+                            //run convTemp class-method to convert temperature & print it out
+                            System.out.println(TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit));
+                        }
+                        catch (Exception e) {
+                            System.out.println("Invalid input" + e);
+                            scan.nextLine(); // consume the next token, not the entire line
+                        }
+                        finally {
+                            System.out.println("\nDo you want to convert again (y/n)?");
+                            anwser = scan.next();
+
+                            //ask user if they want to continue the convertions or exit out of case 1
+                            if (!Objects.equals(anwser, "y"))
+                                break;
+                        }
+                    }
+
+
                 case 2:
-                    continue;
+                    while (true) {
+                        Area.main(null); // Call the Area module
+
+                        // Create a new Scanner instance after the Area module
+                        var scanner = new Scanner(System.in);
+
+                        System.out.println("\nDo you want to convert again (y/n)?");
+                        String answer = scanner.nextLine();
+
+                        if (!answer.equalsIgnoreCase("y")) {
+                            break;
+                        }
+                    }
+                    break;
                 case 3:
-                    continue;
+                    break;
                 case 4:
-                    continue;
+                    break;
                 case 5:
-                    continue;
+                    break;
                 case 6:
-                    continue;
+                    break;
                 case 7:
-                    continue;
+                    break;
                 case 8:
-                    continue;
+                    break;
                 default:
                     System.out.println("Invalid input");
 
