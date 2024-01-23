@@ -5,6 +5,7 @@
  * Project: GrupparbeteProg3
  * Copyright: MIT
  */
+package org.example;
 public class Length {
     private double value;
     private String unit;

@@ -79,6 +79,7 @@ public class Main {
                 case 5:
                     break;
                 case 6:
+                    lengthConverter.main(null);
                     break;
                 case 7:
                     break;
@@ -99,14 +100,14 @@ public class Main {
 }
 
 // class main
-    // public static void
+// public static void
 
-    //loop that runs the program
+//loop that runs the program
 
-    //if-statments to choose which converter to use (area, volumes etc.)
+//if-statments to choose which converter to use (area, volumes etc.)
 
-    //when choosen run a loop inside the loop that runs an imported method with the code to run the calculation
+//when choosen run a loop inside the loop that runs an imported method with the code to run the calculation
 
-    //print result and ask user if they want to run the method again or
-    //go back to the main loop and choose another calculation
+//print result and ask user if they want to run the method again or
+//go back to the main loop and choose another calculation
 
