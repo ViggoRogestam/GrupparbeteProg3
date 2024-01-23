@@ -103,15 +103,6 @@ public class Main {
             }
         }
     }
-    // Method to read the user input
-    private static boolean readContinueInput(Scanner scan) {
-        // Ask the user if they want to continue
-        System.out.print("Do you want to continue (y/n): ");
-        String input = scan.nextLine();
-
-        // Return the user's choice
-        return input.equalsIgnoreCase("y");
-    }
 }
 
 // class main
