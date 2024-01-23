@@ -2,31 +2,30 @@ package org.example;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         var scan = new Scanner(System.in);
         int indata;
-        while (true){
+        while (true) {
             System.out.println("""
-                 . .:: Coordinate System ::..
+                     . .:: Coordinate System ::..
 
-                ------------------------------------------------------------
+                    ------------------------------------------------------------
 
-                1. Calculate the length between two points
-                2. Find the midpoint between two points
-                3. Show the most recent midpoints (max 5 most recent)
+                    1. Calculate the length between two points
+                    2. Find the midpoint between two points
+                    3. Show the most recent midpoints (max 5 most recent)
 
-                ------------------------------------------------------------""");
+                    ------------------------------------------------------------""");
             try {
                 indata = scan.nextInt();
-            }
-            catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Error: Invalid input");
                 scan.next(); // clear the scanner buffer
                 continue;
             }
-            switch (indata){
+            switch (indata) {
                 case 1:
-                    while (true){
+                    while (true) {
                         //declare variables
                         double orgTemp;
                         String fromUnit, toUnit, anwser;
@@ -41,12 +40,10 @@ public class Main {
 
                             //run convTemp class-method to convert temperature & print it out
                             System.out.println(TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit));
-                        }
-                        catch (Exception e) {
+                        } catch (Exception e) {
                             System.out.println("Invalid input" + e);
                             scan.nextLine(); // consume the next token, not the entire line
-                        }
-                        finally {
+                        } finally {
                             System.out.println("\nDo you want to convert again (y/n)?");
                             anwser = scan.next();
 
@@ -81,16 +78,16 @@ public class Main {
                     while (true) {
                         // Choose the unit to convert from
                         System.out.println("""
-                .: Which unit do you want to convert from?
-                ------------------------------------------
-                1. Byte
-                2. Kilobyte
-                3. Megabyte
-                4. Gigabyte
-                5. Terabyte
-                6. Exit
-                -------------------------------------------
-                """);
+                                .: Which unit do you want to convert from?
+                                ------------------------------------------
+                                1. Byte
+                                2. Kilobyte
+                                3. Megabyte
+                                4. Gigabyte
+                                5. Terabyte
+                                6. Exit
+                                -------------------------------------------
+                                """);
 
                         int fromInput = dataScanner.nextInt();
                         if (fromInput == 6) {
@@ -114,15 +111,15 @@ public class Main {
 
                         // Choose the unit to convert to
                         System.out.println("""
-                .: Which unit do you want to convert to?
-                ------------------------------------------
-                1. Byte
-                2. Kilobyte
-                3. Megabyte
-                4. Gigabyte
-                5. Terabyte
-                -------------------------------------------
-                """);
+                                .: Which unit do you want to convert to?
+                                ------------------------------------------
+                                1. Byte
+                                2. Kilobyte
+                                3. Megabyte
+                                4. Gigabyte
+                                5. Terabyte
+                                -------------------------------------------
+                                """);
 
                         int toInput = dataScanner.nextInt();
                         DataSizeConverter.DataUnit toUnit = switch (toInput) {
@@ -160,3 +157,4 @@ public class Main {
             }
         }
     }
+}
