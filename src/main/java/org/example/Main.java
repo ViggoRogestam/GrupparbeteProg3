@@ -5,17 +5,22 @@ public class Main {
     public static void main(String[] args) {
         var scan = new Scanner(System.in);
         int indata;
+        ClearConsole clearConsole = new ClearConsole();
         while (true) {
+            clearConsole.clearConsole();
             System.out.println("""
                      . .:: Coordinate System ::..
 
                     ------------------------------------------------------------
 
                     1. Calculate the length between two points
-                    2. Find the midpoint between two points
+                    2. Convert between temperature units (Celsius, Farenheit & Kelvin)
                     3. Show the most recent midpoints (max 5 most recent)
+                    4.
+                    5. Convert between binary data sizes
 
-                    ------------------------------------------------------------""");
+                    ------------------------------------------------------------
+                    >""");
             try {
                 indata = scan.nextInt();
             } catch (InputMismatchException e) {
@@ -26,25 +31,32 @@ public class Main {
             switch (indata) {
                 case 1:
                     while (true) {
+                        clearConsole.clearConsole();
                         //declare variables
                         double orgTemp;
                         String fromUnit, toUnit, anwser;
                         //ask user for input
                         try {
-                            System.out.println("Enter temperature:");
+                            System.out.println("Enter temperature");
+                            System.out.println("------------------------------------------------------------");
                             orgTemp = scan.nextDouble();
-                            System.out.println("Enter temperature unit (celcsius, farneheit or kelvin):");
+                            System.out.println("Enter temperature unit (celcsius, farneheit or kelvin)");
+                            System.out.println("------------------------------------------------------------");
                             fromUnit = scan.next();
                             System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
+                            System.out.println("------------------------------------------------------------");
                             toUnit = scan.next();
+                            clearConsole.clearConsole();
 
                             //run convTemp class-method to convert temperature & print it out
-                            System.out.println(TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit));
+                            System.out.println(orgTemp + " grader " + fromUnit + " är " + TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit) + " " + toUnit);
+                            System.out.println("------------------------------------------------------------");
                         } catch (Exception e) {
                             System.out.println("Invalid input" + e);
                             scan.nextLine(); // consume the next token, not the entire line
                         } finally {
                             System.out.println("\nDo you want to convert again (y/n)?");
+                            System.out.println("------------------------------------------------------------");
                             anwser = scan.next();
 
                             //ask user if they want to continue the convertions or exit out of case 1
@@ -76,6 +88,8 @@ public class Main {
                 case 5:
                     var dataScanner = new Scanner(System.in);
                     while (true) {
+                        // Clear Console by printing lines
+                        clearConsole.clearConsole();
                         // Choose the unit to convert from
                         System.out.println("""
                                 .: Which unit do you want to convert from?
@@ -137,7 +151,8 @@ public class Main {
                         }
 
                         // Get the amount to convert
-                        System.out.println("Enter the amount you wish to convert:");
+                        System.out.println("Enter the amount you wish to convert");
+                        System.out.println("------------------------------------------------------------");
                         double amount = dataScanner.nextDouble();
 
                         // Perform the conversion
