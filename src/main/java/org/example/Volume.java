@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -7,6 +8,7 @@ import java.util.Scanner;
  * har en klass per uträkning för att göra det lättare att läsa.
  * Tagit hjälp av https://eddler.se/lektioner/volym/ för alla beräkningar.
  * <hr>
+ *
  * @author Anton Lövgren
  * <br>
  * Datum: 2024-01-13
@@ -19,22 +21,43 @@ import java.util.Scanner;
 
 public class Volume {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         /**
          * Menyval för att välja vilken form man vill beräkna
          * <b>do</b>: är vad som händer
          * <b>while</b>: medans man skriver 1 är det true så då går den tillbaka till do
          */
+        int continueOption;
         do {
-            System.out.println("Choose a figure:");
-            System.out.println("1. Cube");
-            System.out.println("2. Cuboid");
-            System.out.println("3. Cylinder");
-            System.out.println("4. Sphere");
+            System.out.println("""
+                     ..:: Volume Calculator ::..
+                                    
+                    ------------------------------------------------------------
+                                    
+                    What figure do you want to calculate the volume of?
+                    1. Cube
+                    2. Cuboid
+                    3. Cylinder
+                    4. Sphere
+                                    
+                    5. Exit to the main menu
+                                    
+                    ------------------------------------------------------------""");
 
-            // Valet som int
-            int option = scanner.nextInt();
+            int option = 0;
+
+            // Felhantering
+            while (true) {
+                try {
+                    option = scan.nextInt();
+                    break; // Om inläsningen är lyckad, bryt ut ur loopen
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: Invalid input");
+                    scan.next(); // Rensa scanner bufferten från felaktig inmatning
+                    System.out.println("Enter a correct option between 1 and 5");
+                }
+            }
 
             // Switch för att ändra till den metoden man väljer
             switch (option) {
@@ -50,14 +73,30 @@ public class Volume {
                 case 4:
                     calculateSphere();
                     break;
+                case 5:
+                    Main.main(null);
+                    break;
                 // Väljs varken 1-4 så är det invalid, då printar den det.
                 default:
                     System.out.println("Invalid option, try again.");
             }
 
-            System.out.println("Do you want to calculate another volume? 1 = yes, 2 = no");
-        } while (scanner.nextInt() == 1);
-
+            continueOption = 0;
+            while (true) {
+                try {
+                    System.out.println("Do you want to calculate another volume? 1 = yes, 2 = no");
+                    continueOption = scan.nextInt();
+                    if (continueOption == 1 || continueOption == 2) {
+                        break;
+                    } else {
+                        System.out.println("Invalid option, enter 1 for yes or 2 for no");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: Invalid input");
+                    scan.next();
+                }
+            }
+        } while (continueOption == 1);
     }
 
     // Alla metoder för att kalla på de andra metoderna som finns i andra klasser.

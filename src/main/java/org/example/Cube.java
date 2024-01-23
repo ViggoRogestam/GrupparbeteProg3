@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,10 +21,18 @@ public class Cube {
         // Volym av en kub är bredd * djup * höjd (där alla är likadana så x^3)
         double sideLength;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Input the side length of the cube in decimetre: ");
-        sideLength = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the side length of the cube in decimeter: ");
+                sideLength = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
 
         double volume = calculateVolume(sideLength);
         System.out.println("The volume of the cube is: " + volume + " litre");

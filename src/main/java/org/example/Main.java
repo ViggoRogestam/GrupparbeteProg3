@@ -75,6 +75,7 @@ public class Main {
                 case 3:
                     break;
                 case 4:
+                    Volume.main(null);
                     break;
                 case 5:
                     break;
