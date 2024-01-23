@@ -3,8 +3,20 @@ package org.example;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class provides a method to convert temperatures between Celsius, Fahrenheit, and Kelvin.
+ */
 public class TemperatureUnits {
 
+    /**
+     * Converts a temperature from one unit to another.
+     *
+     * @param orgTemp   The original temperature to be converted.
+     * @param fromUnit  The original unit of the temperature. Accepts "C", "F", or "K" (case-insensitive).
+     * @param toUnit    The unit to convert the temperature to. Accepts "C", "F", or "K" (case-insensitive).
+     * @return          The converted temperature.
+     * @throws Exception If either fromUnit or toUnit is not one of "C", "F", or "K".
+     */
     public static double convTemp(double orgTemp, String fromUnit, String toUnit) throws Exception {
         List<Character> charList = Arrays.asList('C', 'K', 'F');
         char charToUnit = toUnit.toUpperCase().charAt(0);
