@@ -149,6 +149,7 @@ public class Main {
                     }
                     break;
                 case 6:
+                    lengthConverter.main(null);
                     break;
                 case 7:
                     break;
@@ -159,4 +160,3 @@ public class Main {
             }
         }
     }
-}

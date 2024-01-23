@@ -1,20 +1,33 @@
 /**
  * Created by: Aria Hussein
  * Date: 2024-01-12
- * Time: 15:01
+ * Time: 15:00
  * Project: GrupparbeteProg3
  * Copyright: MIT
  */
+package org.example;
 import java.util.Scanner;
 
 public class lengthConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Length Converter");
 
         while (true) {
-            System.out.print("Enter length and unit > ");
+            System.out.println("""
+                 ..:: Length Converter ::..
+                
+                ------------------------------------------------------------
+
+                Enter length and unit
+                Enter \"exit\" if you want to return to main menu
+                
+                ------------------------------------------------------------""");
             String lengthInput = scanner.nextLine();
+
+
+            if (lengthInput.equals("exit")) {
+                Main.main(null);
+            }
 
             String[] lengthParts = lengthInput.split("\\s+");
             if (lengthParts.length != 2) {
