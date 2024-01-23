@@ -99,7 +99,7 @@ public class Main {
     }
 }
 
-// class main
+// class main .
 // public static void
 
 //loop that runs the program
