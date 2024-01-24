@@ -21,7 +21,8 @@ public class Main {
                         6. Length
                         7. Exit
                                         
-                        ------------------------------------------------------------""");
+                        ------------------------------------------------------------
+                        Choose which converter to use:""" + " ");
                 while (true) {
                     try {
                         indata = scan.nextInt();
