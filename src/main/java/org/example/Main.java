@@ -4,7 +4,9 @@ import java.util.*;
 public class Main {
     public static void main(String[] args){
         try (Scanner scan = new Scanner(System.in)) {
-            //int indata;
+            int indata;
+            ClearConsole clearConsole = new ClearConsole();
+
             outerLoop: while (true) {
                 System.out.println("""
                          . .:: Converter ::..
@@ -19,7 +21,6 @@ public class Main {
                         6. Length
                                         
                         ------------------------------------------------------------""");
-                int indata;
                 while (true) {
                     try {
                         indata = scan.nextInt();
@@ -31,34 +32,41 @@ public class Main {
                 }
                 switch (indata) {
                     case 1:
-                        while (true) {
-                            //declare variables
-                            double orgTemp;
-                            String fromUnit, toUnit, anwser;
-                            //ask user for input
-                            try {
-                                System.out.println("Enter temperature:");
-                                orgTemp = scan.nextDouble();
-                                System.out.println("Enter temperature unit (celcsius, farneheit or kelvin):");
-                                fromUnit = scan.next();
-                                System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
-                                toUnit = scan.next();
+                      while (true) {
+                          clearConsole.clearConsole();
+                          //declare variables
+                          double orgTemp;
+                          String fromUnit, toUnit, anwser;
+                          //ask user for input
+                          try {
+                              System.out.println("Enter temperature");
+                              System.out.println("------------------------------------------------------------");
+                              orgTemp = scan.nextDouble();
+                              System.out.println("Enter temperature unit (celcsius, farneheit or kelvin)");
+                              System.out.println("------------------------------------------------------------");
+                              fromUnit = scan.next();
+                              System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
+                              System.out.println("------------------------------------------------------------");
+                              toUnit = scan.next();
+                              clearConsole.clearConsole();
 
-                                //run convTemp class-method to convert temperature & print it out
-                                System.out.println(TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit));
-                            } catch (Exception e) {
-                                System.out.println("Invalid input" + e);
-                                scan.nextLine(); // consume the next token, not the entire line
-                            } finally {
-                                System.out.println("\nDo you want to convert again (y/n)?");
-                                anwser = scan.next();
+                              //run convTemp class-method to convert temperature & print it out
+                              System.out.println(orgTemp + " grader " + fromUnit + " är " + TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit) + " " + toUnit);
+                              System.out.println("------------------------------------------------------------");
+                          } catch (Exception e) {
+                              System.out.println("Invalid input" + e);
+                              scan.nextLine(); // consume the next token, not the entire line
+                          } finally {
+                              System.out.println("\nDo you want to convert again (y/n)?");
+                              System.out.println("------------------------------------------------------------");
+                              anwser = scan.next();
 
-                                //ask user if they want to continue the convertions or exit out of case 1
-                                if (!Objects.equals(anwser, "y"))
-                                    break;
-                            }
-                        }
-
+                              //ask user if they want to continue the convertions or exit out of case 1
+                              if (!Objects.equals(anwser, "y"))
+                                  break;
+                          }
+                      }
+                      break;
 
                     case 2:
                         while (true) {
@@ -90,17 +98,87 @@ public class Main {
                     case 4:
                         break;
                     case 5:
+                    var dataScanner = new Scanner(System.in);
+                    while (true) {
+                        // Clear Console by printing lines
+                        clearConsole.clearConsole();
+                        // Choose the unit to convert from
+                        System.out.println("""
+                                .: Which unit do you want to convert from?
+                                ------------------------------------------
+                                1. Byte
+                                2. Kilobyte
+                                3. Megabyte
+                                4. Gigabyte
+                                5. Terabyte
+                                6. Exit
+                                -------------------------------------------
+                                """);
+
+                        int fromInput = dataScanner.nextInt();
+                        if (fromInput == 6) {
+                            System.out.println("Exiting program.");
+                            break; // Exit the loop
+                        }
+
+                        DataSizeConverter.DataUnit fromUnit = switch (fromInput) {
+                            case 1 -> DataSizeConverter.DataUnit.BYTES;
+                            case 2 -> DataSizeConverter.DataUnit.KILOBYTES;
+                            case 3 -> DataSizeConverter.DataUnit.MEGABYTES;
+                            case 4 -> DataSizeConverter.DataUnit.GIGABYTES;
+                            case 5 -> DataSizeConverter.DataUnit.TERABYTES;
+                            default -> null;
+                        };
+
+                        if (fromUnit == null) {
+                            System.out.println("Invalid choice for source unit.");
+                            continue; // Start the loop again
+                        }
+
+                        // Choose the unit to convert to
+                        System.out.println("""
+                                .: Which unit do you want to convert to?
+                                ------------------------------------------
+                                1. Byte
+                                2. Kilobyte
+                                3. Megabyte
+                                4. Gigabyte
+                                5. Terabyte
+                                -------------------------------------------
+                                """);
+
+                        int toInput = dataScanner.nextInt();
+                        DataSizeConverter.DataUnit toUnit = switch (toInput) {
+                            case 1 -> DataSizeConverter.DataUnit.BYTES;
+                            case 2 -> DataSizeConverter.DataUnit.KILOBYTES;
+                            case 3 -> DataSizeConverter.DataUnit.MEGABYTES;
+                            case 4 -> DataSizeConverter.DataUnit.GIGABYTES;
+                            case 5 -> DataSizeConverter.DataUnit.TERABYTES;
+                            default -> null;
+                        };
+
+                        if (toUnit == null) {
+                            System.out.println("Invalid choice for target unit.");
+                            continue; // Start the loop again
+                        }
+
+                        // Get the amount to convert
+                        System.out.println("Enter the amount you wish to convert");
+                        System.out.println("------------------------------------------------------------");
+                        double amount = dataScanner.nextDouble();
+
+                        // Perform the conversion
+                        double convertedAmount = DataSizeConverter.convert(amount, fromUnit, toUnit);
+                        System.out.println(amount + " " + fromUnit + " is " + convertedAmount + " " + toUnit + ".");
+                        }
                         break;
                     case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
+                        lengthConverter.main(null);
                         break;
                     default:
-                        System.out.println("Invalid input");
+                            System.out.println("Invalid input");
 
-                }
+                    }
 
 
             }
