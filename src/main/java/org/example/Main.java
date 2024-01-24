@@ -77,7 +77,7 @@ public class Main {
                             Area.main(args, scan);
                             scan.nextLine();
                             // Ask the user if they want to run the program again
-                            System.out.print("\nDo you want to run the program again? (y/n) (close the program with x): ");
+                            System.out.print("\nDo you want to run the program again? (y/n): ");
                             String userInput = scan.nextLine();
                             // If the user enters anything other than 'y', exit the loop
                             if (!userInput.equalsIgnoreCase("y")) {
