@@ -70,20 +70,6 @@ class CoordinateSystemTest {
     }
     @Test
     void testReadPointsFromFile() throws IOException {
-        // Skapa en fil med följande innehåll:
-        // 1.0,1.0
-        // 2.0,2.0
-        // 3.0,3.0
-        // 4.0,4.0
-        //File file = new File("points.txt");
-        //BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-        //writer.write("1.0,1.0\n");
-        //writer.write("2.0,2.0\n");
-        //writer.write("3.0,3.0\n");
-        //writer.write("4.0,4.0\n");
-        //writer.close();
-
-        // Skapa en lista för att lagra de förväntade punkterna
         //dessa punkter måste matchas med de faktiska punkterna i points.txt för att testet ska funka
         List<CustomPoint> expectedPoints = new ArrayList<>();
         expectedPoints.add(new CustomPoint(0.0, 0.0));
