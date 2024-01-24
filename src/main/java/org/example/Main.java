@@ -98,7 +98,8 @@ public class Main {
                             }
                         }
                     case 4:
-                        break;
+                        Volume.main(null);
+                        continue outerLoop;
                     case 5:
                     var dataScanner = new Scanner(System.in);
                     while (true) {
