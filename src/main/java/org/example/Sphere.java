@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,10 +21,18 @@ public class Sphere {
         // Volym av en klot är (4 * π * r^3) / 3
         double radius;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Input the radius of the sphere in decimetre: ");
-        radius = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the radius of the sphere in decimeter: ");
+                radius = scan.nextDouble();
+                break; // Om inläsningen är lyckad, bryt ut ur loopen
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next(); // Rensa scanner bufferten från felaktig inmatning
+            }
+        }
 
         double volume = calculateVolume(radius);
         System.out.println("The volume of the sphere is: " + volume + " litre");

@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -21,13 +22,29 @@ public class Cylinder {
         double radius;
         double height;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Input the radius of the cylinder in decimetre: ");
-        radius = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the radius of the cylinder in decimeter: ");
+                radius = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
 
-        System.out.println("Input the height of the cylinder in decimetre: ");
-        height = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the height of the cylinder in decimeter: ");
+                height = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
 
         double volume = Math.PI * Math.pow(radius, 2) * height;
         System.out.println("The volume of the cylinder is: " + volume + " litre");
