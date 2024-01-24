@@ -19,6 +19,7 @@ public class Main {
                         4. Volume
                         5. Datatype
                         6. Length
+                        7. Exit
                                         
                         ------------------------------------------------------------""");
                 while (true) {
@@ -30,6 +31,8 @@ public class Main {
                         scan.next(); // clear the scanner buffer
                     }
                 }
+                if (indata == 7)
+                    System.exit(0);
                 switch (indata) {
                     case 1:
                       while (true) {
@@ -63,10 +66,9 @@ public class Main {
 
                               //ask user if they want to continue the convertions or exit out of case 1
                               if (!Objects.equals(anwser, "y"))
-                                  break;
+                                  continue outerLoop;
                           }
                       }
-                      break;
 
                     case 2:
                         while (true) {
@@ -101,7 +103,7 @@ public class Main {
                     var dataScanner = new Scanner(System.in);
                     while (true) {
                         // Clear Console by printing lines
-                        clearConsole.clearConsole();
+                        //clearConsole.clearConsole();
                         // Choose the unit to convert from
                         System.out.println("""
                                 .: Which unit do you want to convert from?
@@ -118,7 +120,7 @@ public class Main {
                         int fromInput = dataScanner.nextInt();
                         if (fromInput == 6) {
                             System.out.println("Exiting program.");
-                            break; // Exit the loop
+                            continue outerLoop; // Exit the loop
                         }
 
                         DataSizeConverter.DataUnit fromUnit = switch (fromInput) {
@@ -171,10 +173,9 @@ public class Main {
                         double convertedAmount = DataSizeConverter.convert(amount, fromUnit, toUnit);
                         System.out.println(amount + " " + fromUnit + " is " + convertedAmount + " " + toUnit + ".");
                         }
-                        break;
                     case 6:
                         lengthConverter.main(null);
-                        break;
+                        continue outerLoop;
                     default:
                             System.out.println("Invalid input");
 
