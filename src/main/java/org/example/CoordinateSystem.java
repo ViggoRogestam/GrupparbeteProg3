@@ -35,49 +35,57 @@ public class CoordinateSystem {
                 ------------------------------------------------------------""");
         Scanner scan = new Scanner(System.in);
         while (true) {
-        System.out.println("Select an option from the menu: ");
-        int choice = scan.nextInt();
-            // Alt. 1 beräkna längd mellan två punkter
-        if (choice == 1) {
-            System.out.print("Enter the x-coordinate for point 1: ");
-            double x1 = scan.nextDouble();
-            System.out.print("Enter the y-coordinate for point 1: ");
-            double y1 = scan.nextDouble();
+            System.out.println("Select an option from the menu: ");
 
-            System.out.print("Enter the x-coordinate for point 2: ");
-            double x2 = scan.nextDouble();
-            System.out.print("Enter the y-coordinate for point 2: ");
-            double y2 = scan.nextDouble();
-            distance(x1, y1, x2, y2);
-            break;
-        }
+            try {
+                int choice = scan.nextInt();
 
-        // Alt. 2 få fram mittpunkten mellan två punkter (spara punkten i en array?)
-        else if (choice == 2) {
-            CustomPoint middle = middlePoint();
-            System.out.println("The midpoint is: " + middle);
-            arrayPoints(middle);
-            System.out.println();
-            break;
-        }
-        // Alt. 3 visa senaste 5 mittpunkterna (max 5 senaste)
-            // Om ingen mittpunkt är angiven visa meddelande om det
-        else if (choice == 3) {
-            // Kontrollera om listan av CustomPoint är tom
-            if (points.isEmpty()) {
-                System.out.println("There is no midpoints stored");
-            } else {
-                // Annars, använd listan av CustomPoint från filen
-                for (CustomPoint point : points) {
-                    System.out.println(point);
+                if (choice == 1) {
+                    System.out.print("Enter the x-coordinate for point 1: ");
+                    double x1 = getDoubleInput(scan, scan.nextLine());
+                    System.out.print("Enter the y-coordinate for point 1: ");
+                    double y1 = getDoubleInput(scan, scan.nextLine());
+
+                    System.out.print("Enter the x-coordinate for point 2: ");
+                    double x2 = getDoubleInput(scan, scan.nextLine());
+                    System.out.print("Enter the y-coordinate for point 2: ");
+                    double y2 = getDoubleInput(scan, scan.nextLine());
+                    distance(x1, y1, x2, y2);
+                    break;
                 }
+
+                // Alt. 2 få fram mittpunkten mellan två punkter (spara punkten i en array?)
+                else if (choice == 2) {
+                    CustomPoint middle = middlePoint();
+                    System.out.println("The midpoint is: " + middle);
+                    arrayPoints(middle);
+                    System.out.println();
+                    break;
+                }
+                // Alt. 3 visa senaste 5 mittpunkterna (max 5 senaste)
+                // Om ingen mittpunkt är angiven visa meddelande om det
+                else if (choice == 3) {
+                    // Kontrollera om listan av CustomPoint är tom
+                    if (points.isEmpty()) {
+                        System.out.println("There is no midpoints stored");
+                    } else {
+                        // Annars, använd listan av CustomPoint från filen
+                        for (CustomPoint point : points) {
+                            System.out.println(point);
+                        }
+                    }
+                    break;
+                }
+                else
+                    System.out.println("Enter a valid choice (1-3)");
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Please enter a valid integer.");
+                scan.nextLine(); // Clear the scanner buffer
             }
-            break;
-        }
-        else
-            System.out.println("Enter a valid choice (1-3)");
         }
     }
+            // Alt. 1 beräkna längd mellan två punkter
+
 
     // har denna som static double och inte void för att kunna spara längden
     // i fil, likt mittpunkten
@@ -229,6 +237,25 @@ public class CoordinateSystem {
         }
 
         return pointsList;
+    }
+    /**
+     * Read a double value from the user with the provided prompt using the given Scanner.
+     *
+     * @param scan   Scanner object to read input.
+     * @param prompt Prompt to display to the user.
+     * @return The double entered by the user.
+     */
+    static double getDoubleInput(Scanner scan, String prompt) {
+        double value;
+
+        System.out.print(prompt);
+        while (!scan.hasNextDouble()) {
+            System.out.print("Error: Please enter a valid number: ");
+            scan.next(); // Delete invalid input
+        }
+        value = scan.nextDouble();
+
+        return value;
     }
 }
 

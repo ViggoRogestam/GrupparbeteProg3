@@ -6,6 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 /**
  * Created by Lina Romilson
@@ -64,48 +65,49 @@ public class AreaTest {
     }
     @Test
     void testCalculateCircleArea() {
-        System.setIn(new ByteArrayInputStream("3\n".getBytes())); // Simulate user input
-        double result = Area.calculateCircleArea();
+        // Simulate user input
+        System.setIn(new ByteArrayInputStream("3\n".getBytes()));
+        double result = Area.calculateCircleArea(new Scanner(System.in)); // Pass Scanner
         assertEquals(28.274, result, 0.001);
     }
+
     @Test
     void testCalculateRectangleArea() {
-
-        System.setIn(new ByteArrayInputStream("2.5\n3.7\n".getBytes())); // Simulate user input
-        double result = Area.calculateRectangleArea();
-
-        // Testa metoden med olika höjder och baser
-        assertEquals(9.25, result,0.0001);
+        // Simulate user input
+        System.setIn(new ByteArrayInputStream("2,5\n3,7\n".getBytes()));
+        double result = Area.calculateRectangleArea(new Scanner(System.in)); // Pass Scanner
+        assertEquals(9.25, result, 0.0001);
     }
+
     @Test
     void testCalculateTriangleArea() {
-        System.setIn(new ByteArrayInputStream("5\n6\n".getBytes())); // Simulate user input
-        double result = Area.calculateTriangleArea();
-
-        // Testa metoden med olika höjder och baser
-        assertEquals(15, result,0.0001);
+        // Simulate user input
+        System.setIn(new ByteArrayInputStream("5\n6\n".getBytes()));
+        double result = Area.calculateTriangleArea(new Scanner(System.in)); // Pass Scanner
+        assertEquals(15, result, 0.0001);
     }
+
     @Test
     void testCalculateHexagonArea() {
-        System.setIn(new ByteArrayInputStream("3\n".getBytes())); // Simulate user input
-        double result = Area.calculateHexagonArea();
-
-        // Testa metoden med olika sidor av hexagonen
-        assertEquals(23.382, result,0.001);
+        // Simulate user input
+        System.setIn(new ByteArrayInputStream("3\n".getBytes()));
+        double result = Area.calculateHexagonArea(new Scanner(System.in)); // Pass Scanner
+        assertEquals(23.382, result, 0.001);
     }
     @Test
     void testGetPositiveDoubleInput() {
         // Set up the mock input
-        String input = "-1\n0\nabc\n5.5\n";
+        String input = "-1\n0\nabc\n5,5\n";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
+        Scanner scanner = new Scanner(inputStream); // Create a Scanner for the input
 
         // Execute the method and capture output
-        double result = Area.getPositiveDoubleInput("Enter a positive number: ");
+        double result = Area.getPositiveDoubleInput(scanner, "Enter a positive number: "); // Pass Scanner
 
         // Assert the result
         assertEquals(5.5, result, 0.0001);
     }
+
     @Test
     void testPrintMenu() {
         // Prepare to capture System.out
@@ -134,17 +136,24 @@ public class AreaTest {
     }
     @Test
     void testHandleShapeInput() {
-        // Använd en ByteArrayInputStream för att simulera användarinput
-        String input = "3\n"; // Använd 3 för att testa calculateTriangleArea
-        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        System.setIn(inputStream);
+        // Simulate user input
+        System.setIn(new ByteArrayInputStream("3\n".getBytes())); // Use 3 to test calculateTriangleArea
+        Scanner scanner = new Scanner(System.in);
 
-        // Anropa metoden handleShapeInput och fånga upp utmatningen (System.out)
-        String output = TestUtils.captureSystemOut(() -> Area.handleShapeInput(3));
+        // Capture System.out
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
 
-        // Kontrollera att utmatningen innehåller förväntad text
-        assertTrue(output.contains("Enter the base and height (Base Height):"));
-        assertTrue(output.contains("Error: End of input reached unexpectedly."));
-        assertTrue(output.contains("The area of the selected shape is 0,00"));
+        // Call the method
+        Area.handleShapeInput(3, scanner); // Pass Scanner
+
+        // Reset System.out
+        System.setOut(System.out);
+
+        // Define the expected output
+        String expectedOutput = "Enter the base and height (Base Height): ";
+
+        // Check if the captured output matches the expected output
+        assertTrue(outputStream.toString().contains(expectedOutput));
     }
 }

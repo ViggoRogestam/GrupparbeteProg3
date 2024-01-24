@@ -98,4 +98,17 @@ class CoordinateSystemTest {
         // Jämför de förväntade och faktiska punkterna
         assertEquals(expectedPoints.toString(), actualPoints.toString());
     }
+    @Test
+    void testGetDoubleInput() {
+        // Set up the mock input
+        String input = "abc\n--\n5,5\n";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(inputStream); // Create a Scanner for the input
+
+        // Execute the method and capture output
+        double result = CoordinateSystem.getDoubleInput(scanner, "Enter a positive number: "); // Pass Scanner
+
+        // Assert the result
+        assertEquals(5.5, result, 0.0001);
+    }
 }

@@ -2,90 +2,102 @@ package org.example;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        var scan = new Scanner(System.in);
-        int indata;
-        ClearConsole clearConsole = new ClearConsole();
-        while (true) {
-            clearConsole.clearConsole();
-            System.out.println("""
-                     . .:: Coordinate System ::..
+    public static void main(String[] args){
+        try (Scanner scan = new Scanner(System.in)) {
+            int indata;
+            ClearConsole clearConsole = new ClearConsole();
 
-                    ------------------------------------------------------------
-
-                    1. Calculate the length between two points
-                    2. Convert between temperature units (Celsius, Farenheit & Kelvin)
-                    3. Show the most recent midpoints (max 5 most recent)
-                    4.
-                    5. Convert between binary data sizes
-
-                    ------------------------------------------------------------
-                    >""");
-            try {
-                indata = scan.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Invalid input");
-                scan.next(); // clear the scanner buffer
-                continue;
-            }
-            switch (indata) {
-                case 1:
-                    while (true) {
-                        clearConsole.clearConsole();
-                        //declare variables
-                        double orgTemp;
-                        String fromUnit, toUnit, anwser;
-                        //ask user for input
-                        try {
-                            System.out.println("Enter temperature");
-                            System.out.println("------------------------------------------------------------");
-                            orgTemp = scan.nextDouble();
-                            System.out.println("Enter temperature unit (celcsius, farneheit or kelvin)");
-                            System.out.println("------------------------------------------------------------");
-                            fromUnit = scan.next();
-                            System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
-                            System.out.println("------------------------------------------------------------");
-                            toUnit = scan.next();
-                            clearConsole.clearConsole();
-
-                            //run convTemp class-method to convert temperature & print it out
-                            System.out.println(orgTemp + " grader " + fromUnit + " är " + TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit) + " " + toUnit);
-                            System.out.println("------------------------------------------------------------");
-                        } catch (Exception e) {
-                            System.out.println("Invalid input" + e);
-                            scan.nextLine(); // consume the next token, not the entire line
-                        } finally {
-                            System.out.println("\nDo you want to convert again (y/n)?");
-                            System.out.println("------------------------------------------------------------");
-                            anwser = scan.next();
-
-                            //ask user if they want to continue the convertions or exit out of case 1
-                            if (!Objects.equals(anwser, "y"))
-                                break;
-                        }
+            outerLoop: while (true) {
+                System.out.println("""
+                         . .:: Converter ::..
+                                        
+                        ------------------------------------------------------------
+                            
+                        1. Temperature
+                        2. Area
+                        3. Coordinate system
+                        4. Volume
+                        5. Datatype
+                        6. Length
+                                        
+                        ------------------------------------------------------------""");
+                while (true) {
+                    try {
+                        indata = scan.nextInt();
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Error: Invalid input");
+                        scan.next(); // clear the scanner buffer
                     }
-                    break;
+                }
+                switch (indata) {
+                    case 1:
+                      while (true) {
+                          clearConsole.clearConsole();
+                          //declare variables
+                          double orgTemp;
+                          String fromUnit, toUnit, anwser;
+                          //ask user for input
+                          try {
+                              System.out.println("Enter temperature");
+                              System.out.println("------------------------------------------------------------");
+                              orgTemp = scan.nextDouble();
+                              System.out.println("Enter temperature unit (celcsius, farneheit or kelvin)");
+                              System.out.println("------------------------------------------------------------");
+                              fromUnit = scan.next();
+                              System.out.println("Enter unit to convert to (celcsius, farneheit or kelvin)");
+                              System.out.println("------------------------------------------------------------");
+                              toUnit = scan.next();
+                              clearConsole.clearConsole();
 
-                case 2:
-                    while (true) {
-                        Area.main(null); // Call the Area module
+                              //run convTemp class-method to convert temperature & print it out
+                              System.out.println(orgTemp + " grader " + fromUnit + " är " + TemperatureUnits.convTemp(orgTemp, fromUnit, toUnit) + " " + toUnit);
+                              System.out.println("------------------------------------------------------------");
+                          } catch (Exception e) {
+                              System.out.println("Invalid input" + e);
+                              scan.nextLine(); // consume the next token, not the entire line
+                          } finally {
+                              System.out.println("\nDo you want to convert again (y/n)?");
+                              System.out.println("------------------------------------------------------------");
+                              anwser = scan.next();
 
-                        // Create a new Scanner instance after the Area module
-                        var scanner = new Scanner(System.in);
+                              //ask user if they want to continue the convertions or exit out of case 1
+                              if (!Objects.equals(anwser, "y"))
+                                  break;
+                          }
+                      }
+                      break;
 
-                        System.out.println("\nDo you want to convert again (y/n)?");
-                        String answer = scanner.nextLine();
-
-                        if (!answer.equalsIgnoreCase("y")) {
-                            break;
+                    case 2:
+                        while (true) {
+                            // Call the main method of the Area class
+                            Area.main(args, scan);
+                            scan.nextLine();
+                            // Ask the user if they want to run the program again
+                            System.out.print("\nDo you want to run the program again? (y/n) (close the program with x): ");
+                            String userInput = scan.nextLine();
+                            // If the user enters anything other than 'y', exit the loop
+                            if (!userInput.equalsIgnoreCase("y")) {
+                                continue outerLoop;
+                            }
                         }
-                    }
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
+                    case 3:
+                        while (true) {
+                            // Call the main method of the CoordinateSystem class
+                            CoordinateSystem.main(args);
+
+                            // Ask the user if they want to run the program again
+                            System.out.print("Do you want to run the program again? (y/n): ");
+                            String input = scan.next();
+
+                            // If the user enters anything other than 'y', exit the loop
+                            if (!input.equalsIgnoreCase("y")) {
+                                continue outerLoop;
+                            }
+                        }
+                    case 4:
+                        break;
+                    case 5:
                     var dataScanner = new Scanner(System.in);
                     while (true) {
                         // Clear Console by printing lines
@@ -158,18 +170,30 @@ public class Main {
                         // Perform the conversion
                         double convertedAmount = DataSizeConverter.convert(amount, fromUnit, toUnit);
                         System.out.println(amount + " " + fromUnit + " is " + convertedAmount + " " + toUnit + ".");
+                        }
+                        break;
+                    case 6:
+                        lengthConverter.main(null);
+                        break;
+                    default:
+                            System.out.println("Invalid input");
+
                     }
-                    break;
-                case 6:
-                    lengthConverter.main(null);
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                default:
-                    System.out.println("Invalid input");
+
+
             }
         }
     }
 }
+
+// class main
+// public static void
+
+//loop that runs the program
+
+//if-statments to choose which converter to use (area, volumes etc.)
+
+//when choosen run a loop inside the loop that runs an imported method with the code to run the calculation
+
+//print result and ask user if they want to run the method again or
+//go back to the main loop and choose another calculation
