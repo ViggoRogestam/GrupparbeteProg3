@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -22,16 +23,41 @@ public class Cuboid {
         double depth;
         double height;
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Input the width of the cuboid in decimetre: ");
-        width = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the width of the cuboid in decimeter: ");
+                width = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
 
-        System.out.println("Input the depth of the cuboid in decimetre: ");
-        depth = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the depth of the cuboid in decimeter: ");
+                depth = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
 
-        System.out.println("Input the height of the cuboidin decimetre: ");
-        height = scanner.nextDouble();
+        while (true) {
+            try {
+                System.out.println("Input the height of the cuboid in decimeter: ");
+                height = scan.nextDouble();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Invalid input");
+                scan.next();
+            }
+        }
+
 
         double volume = calculateVolume(width, depth, height);
         System.out.println("Volume of the rectangular block: " + volume + " litre");
