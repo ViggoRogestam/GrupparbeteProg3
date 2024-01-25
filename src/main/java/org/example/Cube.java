@@ -23,6 +23,7 @@ public class Cube {
 
         Scanner scan = new Scanner(System.in);
 
+        // Hanterar felinmatningar i while-loopen
         while (true) {
             try {
                 System.out.println("Input the side length of the cube in decimeter: ");
