@@ -23,6 +23,7 @@ public class Sphere {
 
         Scanner scan = new Scanner(System.in);
 
+        // Hanterar felinmatning i en while-loop och
         while (true) {
             try {
                 System.out.println("Input the radius of the sphere in decimeter: ");
@@ -38,6 +39,7 @@ public class Sphere {
         System.out.println("The volume of the sphere is: " + volume + " litre");
     }
 
+    // Beräkningen av ett klot, Math.pow = radius^3
     public static double calculateVolume(double radius) {
         return (4 * Math.PI * Math.pow(radius, 3)) / 3;
     }

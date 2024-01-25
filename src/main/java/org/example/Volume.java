@@ -30,6 +30,7 @@ public class Volume {
          */
         int continueOption;
         do {
+            // Skriver ut menyn
             System.out.println("""
                      ..:: Volume Calculator ::..
                                     
@@ -76,7 +77,7 @@ public class Volume {
                 case 5:
                     Main.main(null);
                     break;
-                // Väljs varken 1-4 så är det invalid, då printar den det.
+                // Väljs varken 1-5 så är det invalid, då printar den det.
                 default:
                     System.out.println("Invalid option, try again.");
             }

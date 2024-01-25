@@ -25,6 +25,7 @@ public class Cuboid {
 
         Scanner scan = new Scanner(System.in);
 
+        // Hanterar felinmatningar i while-loopar
         while (true) {
             try {
                 System.out.println("Input the width of the cuboid in decimeter: ");
@@ -63,6 +64,7 @@ public class Cuboid {
         System.out.println("Volume of the rectangular block: " + volume + " litre");
     }
 
+    // Formel för volym av ett rätblock
     public static double calculateVolume(double width, double depth, double height) {
         return width * depth * height;
     }

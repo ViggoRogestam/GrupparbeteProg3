@@ -24,6 +24,7 @@ public class Cylinder {
 
         Scanner scan = new Scanner(System.in);
 
+        // Hanterar felinmatningar i while-looparna
         while (true) {
             try {
                 System.out.println("Input the radius of the cylinder in decimeter: ");
@@ -50,6 +51,7 @@ public class Cylinder {
         System.out.println("The volume of the cylinder is: " + volume + " litre");
     }
 
+    // Formel för volym av en cylinder, Math.pow = radius^2
     public static double calculateVolume(double radius, double height) {
         return Math.PI * Math.pow(radius, 2) * height;
     }
