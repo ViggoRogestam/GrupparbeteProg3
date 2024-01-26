@@ -12,6 +12,12 @@ public class lengthConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        /**
+         * Startas en loop som inte tar slut tills man skriver exit.
+         * kräver args:
+         * Length: int
+         * Unit: String
+         */
         while (true) {
             System.out.println("""
                  ..:: Length Converter ::..
@@ -25,10 +31,11 @@ public class lengthConverter {
             String lengthInput = scanner.nextLine();
 
 
+            // Avslutar och går tillbaka till main
             if (lengthInput.equals("exit")) {
                 Main.main(null);
             }
-
+            // Plockar isär lengthinput string och skapar 2 olika variabel, längd och sedan unit för att kunna konvertera
             String[] lengthParts = lengthInput.split("\\s+");
             if (lengthParts.length != 2) {
                 System.out.println("Error: Enter valid length and unit.");
@@ -40,6 +47,8 @@ public class lengthConverter {
             String valueStr = lengthParts[0];
             String unit = lengthParts[1];
 
+
+            // Val utav vilken unit man vill konvertera till
             try {
                 double value = Double.parseDouble(valueStr);
                 Length l1 = new Length(value, unit);
@@ -86,6 +95,8 @@ public class lengthConverter {
             }
         }
     }
+
+    // för att undvika skriva ut massa decimaler.
     private static String formatDecimal(double value) {
         return String.format("%.3f", value);
     }

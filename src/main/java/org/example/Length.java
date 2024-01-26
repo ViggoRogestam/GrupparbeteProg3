@@ -10,6 +10,11 @@ public class Length {
     private double value;
     private String unit;
 
+    /**
+     * Tar emot 2 param value (int) och unit (string) för att veta vad talet är just nu och för att sedan räkna ut det nya talet.
+     * @param value
+     * @param unit
+     */
     public Length(double value, String unit) {
         this.value = value;
         this.unit = unit.toLowerCase();
