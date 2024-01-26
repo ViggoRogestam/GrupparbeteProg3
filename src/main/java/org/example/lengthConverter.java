@@ -27,7 +27,16 @@ public class lengthConverter {
                 Enter length and unit
                 Enter \"exit\" if you want to return to main menu
                 
-                ------------------------------------------------------------""");
+                
+                Unit to choose betweeen:
+                1. millimeter
+                2. centimeter
+                3. meter
+                4. kilometer
+                5. inches
+                6. feet
+                ------------------------------------------------------------
+                """);
             String lengthInput = scanner.nextLine();
 
 
@@ -98,6 +107,6 @@ public class lengthConverter {
 
     // för att undvika skriva ut massa decimaler.
     private static String formatDecimal(double value) {
-        return String.format("%.3f", value);
+        return String.format("%.5f", value);
     }
 }
